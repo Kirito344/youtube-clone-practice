@@ -1,0 +1,1138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+    <title>Youtube</title>
+
+
+    <style>
+
+
+
+:root {
+ --colorone : #ffffff;   
+ /* applied to header and left menu */
+ --paddingone :10px 15px 10px 6px;
+ --samem :10px;
+ --sectionpadding :25px 15px;
+ --bodybackground:#0f0f0f;
+ --headercolor :#0f0f0feb;
+ --hovercolor :#272727;
+ --cardhovcolor: #332a22;
+ --textinputcolor:#332a22;
+}
+
+        * {
+            box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+
+    font-family: 'Roboto', 'Arial', 'sans-serif';
+
+
+        }
+
+        body{
+            /* display: flex;
+            flex-direction: column; */
+            background-color: var(--bodybackground);
+        
+        }
+    .left-menu{
+        display: flex; 
+        flex-direction: column;
+        padding: var(--paddingone);
+        position: fixed;
+        left: 0;
+        overflow-y: scroll;
+        scrollbar-width: none;
+        height: 92%;
+        /* the left menu now is floating it does not take the full height from its container 
+        so that why we erote it hardly  */
+        align-items: flex-start;
+     
+    }
+
+
+   
+
+  .left-menu >  ul {
+        list-style: none;
+        font-size: 23px;
+        color: var(--colorone);
+        display: flex;
+  flex-flow: column;
+  align-items: flex-start;
+    }
+
+
+    
+    .left-menu >  ul li {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        border-radius: 10px; 
+     padding: calc(var(--samem) * 2) var(--samem) ;
+
+    
+    
+    } 
+
+
+
+    /* bars icon */
+    header > .logo > span i:nth-child(1){
+        font-size: 23px;
+        margin:  0 var(--samem);
+        width: 40px;
+        height: 40px;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 20px;
+    }
+
+
+    header > .logo > span i:nth-child(1):hover {
+        background-color: #303030;
+    }
+
+
+
+    .left-menu > ul  >li >i {
+        width: 40px;
+        height: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+
+
+    }
+    
+    .left-menu ul  >li:hover{
+        
+        background-color: var(--hovercolor);
+
+    }
+
+    
+    /* left menu icon text */
+    .left-menu >ul span {
+        font-size: 10px;
+    }
+
+ 
+
+
+  
+
+    .content-wrapper {
+        display: flex;
+  flex-direction: column;
+  min-width:0;
+
+
+    }
+
+    header {
+        display: flex;
+        width: 100%;
+        /* fixed height: the nav (top: 66px) and the content (margin-top: 66px) start right under it */
+        height: 66px;
+        align-items: center;
+        justify-content: space-between;
+        padding: var(--paddingone);
+        position: fixed;
+        top :0;
+        background-color: var(--headercolor);
+  backdrop-filter: blur(3px) sepia(17%) brightness(221%);
+    }
+
+
+    .bar-and-content{
+        display: flex;
+        margin-top: 66px;
+        margin-left: 60px;
+
+    }
+
+    .logo {
+        display: flex;
+        align-items: center;
+        color: var(--colorone);
+    } 
+
+    .logo  > i {
+        font-size: 25px;
+        color: red;
+        width: 30px;
+        height: 30px;
+        position: relative;
+    }
+
+    .logo > h1 {
+        font-size: 18px;
+    }
+
+    .logo  > i::after{
+        content: "";
+  position: absolute;
+  display: block;
+  width: 13px;
+  height: 13px;
+  color: black;
+  z-index: -1;
+  background-color: white;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+    }
+
+
+    form{
+        position:relative ;
+        color: #787878;
+  
+    }
+
+
+    .form-wrapper{
+        display: flex;
+    }
+
+
+    .form-wrapper > button{
+        background-color: var(--hovercolor);
+        color: var(--colorone);
+        border:0px transparent none;
+        width: 44px;
+        height: 44px;
+        border-radius: 40px;
+        font-size: 20px;
+        margin-left: 20px;
+        cursor: pointer;
+  
+    }
+
+    .form-wrapper > button:hover{
+        background-color: #3d3d3d;
+    }
+
+
+            /* form input */
+            form input:nth-child(1) {
+        width:32.9vw;
+        height: 44px;
+        border: 1px solid #303030;
+        border-radius: 20px;
+        background-color: var(--textinputcolor);
+        color: var(--colorone);
+        font-size: 16px;
+        padding: 10px;
+            }
+
+    .form-wrapper form > span {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translate(50%,-50%);
+    color: var(--colorone);
+    visibility: hidden;
+    }
+
+
+    form input:nth-child(1):focus {
+        outline: solid 1px #004396;
+        padding-left: 40px;
+    } 
+
+
+    .form-wrapper:focus-within  span {
+        visibility: visible;
+    }
+
+
+    form::placeholder {
+        color: #787878;
+
+    }
+
+
+
+
+    form  > button {
+        border:00px black solid;
+        background-color: #222222;
+        width: 80px;
+        height: 44px;
+        border-top-right-radius: 40px;
+        border-bottom-right-radius: 40px;
+        position: absolute;
+        top: 0;
+        right: 0;
+        color: var(--colorone);
+        font-size: 20px;
+
+    }
+
+    
+
+    .create-button {
+        width: 100px;
+        height: 44px;
+        border: none;
+        background-color: var(--hovercolor);
+        border-radius: 40px;
+        color: var(--colorone);
+        font-weight: bold;
+        
+
+    }
+
+    .create-button:hover {
+     
+        background-color: #363030;
+  
+
+    }
+  
+
+    .rounded-button {
+        width: 44px;
+        height: 44px;
+        border: none;
+        color: var(--colorone);
+        font-size: 20px;
+        border-radius: 40px;
+        background-color: transparent;
+
+    }
+
+
+    .rounded-button:hover {
+        background-color: var(--hovercolor);
+
+    }
+
+    .profile-area button:nth-child(3) {
+        background-color: var(--colorone);
+        color: #0187d0;
+        
+    }
+
+    nav {
+        display: flex;
+        width: 100%;
+  position: sticky;
+  top: 66px;
+  /* 66px as head height later modfied to be dyncimally */
+  z-index: 1;
+  background-color: var(--headercolor);
+  padding: var(--paddingone);
+
+
+  /* sticky instead of fixed: the nav stays in the layout, so it is exactly as wide as
+  the content (ends where the header ends) and the videos start under it, not behind it */
+
+     
+    }
+
+    nav button {
+        flex-shrink: 0;
+  width: 35px;
+  height: 35px;
+  background-color: transparent;
+  color: white;
+  border-radius: 20px;
+  font-size: 27px;
+  text-align: center;
+  border: none;
+    }
+
+
+  
+    nav ul{
+        display: flex;
+        list-style: none;
+        color: var(--colorone);
+        font-size: 14px;
+        font-weight:100;
+        padding:  0 15px;
+        overflow-x: scroll;
+        scrollbar-width: none;
+        scroll-behavior: smooth;
+        pointer-events: none ;
+        /* take all the space between the two arrow buttons */
+        flex: 1;
+        min-width: 0;
+    }
+
+    nav ul li {
+        padding: 10px;
+        background-color: #272727;
+        white-space: nowrap;
+        border-radius: 8px;
+        font-weight: bold;
+        margin-right: 10px;
+    }
+
+
+    main {
+      /* doom */
+    }
+
+    main .main-videos-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit,minmax(400px,1fr));
+        gap: 40px 20px;
+                padding:var(--sectionpadding);
+
+    }
+
+    main .card {
+    /*the width of card controlled by grid templeate columns */
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 20px;
+    transition:  0.1s ease-in-out;
+    
+    }
+
+    main .card:hover {
+        background-color: var(--cardhovcolor);
+    }
+
+
+    main .card >img {
+        width: 100%;
+        /* keep the 16:9 video shape at any card width, crop instead of stretching */
+        aspect-ratio: 16 / 9;
+        object-fit: cover;
+  border-radius: 12px;
+    }
+
+
+
+    main .card .video-texts-wrapper {
+        display: flex;;
+    
+  justify-content: space-between;
+  padding: 13px 0px;
+  align-items: flex-start;
+    }
+
+
+     main .card .img-and-texts{
+         display: flex;
+     }
+    main  .card .video-texts-wrapper img {
+        width: 40px;
+        height: 40px;
+        border-radius: 40px;
+        margin-right: 15px;
+    } 
+
+    
+    main  .card .video-texts-wrapper h3 , .reel-card-text-container h3{
+        font-size: 16px;
+        color: var(--colorone);
+        margin-bottom:5px ;
+        font-weight: 500;
+        }
+
+        main  .card .video-texts-wrapper h4:hover, .reel-card-text-container h4{
+            color: var(--colorone);
+        }
+
+
+        main  .card .video-texts-wrapper h4 ,main  .card .video-texts-wrapper h5 , .reel-card-text-container h4{
+        color:#a8a8a8;
+        margin-bottom: 5px;
+        font-size: 14px;
+        font-weight: 400;
+
+
+        }
+
+ 
+
+
+        .video-texts-wrapper >button ,.reel-card-text-container > button{
+                background-color: transparent;
+                border: none;
+                color: var(--colorone);
+                font-size: 22px;
+                border-radius: 40px;
+        }
+
+
+        .video-texts-wrapper >button:hover{
+        background-color: #3f3f3f;
+    }
+
+    /* reels: one row that scrolls left and right */
+    .main-reels-container {
+        display: grid;
+        grid-auto-flow: column;
+        grid-auto-columns: 250px;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        /* snapped reels line up with the page padding, not the screen edge */
+        scroll-padding: 0 15px;
+        scrollbar-width: thin;
+        scrollbar-color: var(--hovercolor) transparent;
+        padding:var(--sectionpadding);
+
+        gap: 20px;
+    }
+
+    .reel-card {
+        scroll-snap-align: start;
+    }
+
+    .main-reels-container img {
+        width: 100%;
+        /* tall shorts shape */
+        aspect-ratio: 9 / 16;
+        object-fit: cover;
+        border-radius: 20px;
+    }
+
+    .reel-card-text-container {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .disnone{
+        display: none !important;
+    }
+
+    .for-span {
+
+        margin: 0 50px 0 75px;
+        font-size: 20px;
+    }
+
+    .border {
+        border-radius: 20px;
+        height: 25px;
+        width: 25px;
+    }
+
+
+    .left-menu-row {
+        flex-direction: row !important;
+        width: 210px;
+        max-width: 250px;
+        justify-content: flex-start !important;
+        padding:  var(--samem) var(--samem) !important;
+
+    }
+
+
+
+
+    .bigger-span {
+        font-size: 14px !important;
+        font-weight: 400;
+        margin-left: 13.5px;
+    }
+
+
+    .hr-style{
+        width: 100%; 
+        margin: 5px 0;
+    }
+
+         .hovactive:hover {
+        scrollbar-width: thin  !important;
+
+    }
+
+
+
+
+        
+        
+        
+    /* responsive start */
+
+    /* tablets: two video columns, Create shows only its plus icon */
+    @media (max-width: 900px) {
+        main .main-videos-container {
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        }
+
+        .create-button {
+            width: 44px;
+        }
+
+        .create-button span {
+            display: none;
+        }
+    }
+
+    /* touch screens: swipe the chips instead of using the arrows */
+    @media (max-width: 768px) {
+        nav .scroll-nav-button {
+            display: none !important;
+        }
+
+        nav ul {
+            pointer-events: auto;
+            padding: 0;
+        }
+    }
+
+    /* phones */
+    @media (max-width: 640px) {
+        /* header keeps menu, logo, search and profile only */
+        .logo > h1,
+        .form-wrapper > button,
+        .create-button,
+        .profile-area .rounded-button:nth-child(2),
+        .profile-area .rounded-button:nth-child(4) {
+            display: none;
+        }
+
+        header {
+            gap: 8px;
+        }
+
+        .form-wrapper,
+        .form-wrapper form {
+            flex: 1;
+            min-width: 0;
+        }
+
+        form input:nth-child(1) {
+            width: 100%;
+        }
+
+        /* no icon rail on phones: Home, reels and you become a bar at the bottom */
+        .left-menu:not(.open) {
+            top: auto;
+            bottom: 0;
+            right: 0;
+            height: auto;
+            padding: 0;
+            z-index: 2;
+            background-color: var(--headercolor);
+            border-top: 1px solid var(--hovercolor);
+        }
+
+        .left-menu:not(.open) > ul:first-child {
+            flex-direction: row;
+            justify-content: space-around;
+            width: 100%;
+        }
+
+        .left-menu:not(.open) > ul:first-child li {
+            padding: 6px 20px;
+        }
+
+        /* the menu button opens the menu over the whole screen, under the header */
+        .left-menu.open {
+            top: 66px;
+            bottom: 0;
+            right: 0;
+            width: auto;
+            height: auto;
+            z-index: 3;
+            background-color: var(--bodybackground);
+        }
+
+        /* menu rows and lines use the full screen width */
+        .left-menu.open > ul,
+        .left-menu.open .left-menu-row {
+            width: 100%;
+            max-width: none;
+        }
+
+        /* header stays above the dark layer so the menu button can close the menu */
+        header {
+            z-index: 4;
+        }
+
+        /* the page behind the open menu does not scroll */
+        body:has(.left-menu.open) {
+            overflow: hidden;
+        }
+
+        /* room at the bottom so the last videos are not hidden behind the bar */
+        main {
+            padding-bottom: 70px;
+        }
+
+        /* beats the margin main.js sets for the desktop menu */
+        .bar-and-content {
+            margin-left: 0 !important;
+        }
+
+        :root {
+            --sectionpadding: 15px 10px;
+        }
+
+        main .main-videos-container {
+            grid-template-columns: 1fr;
+        }
+
+        /* two and a bit reels on screen, so it is clear the row scrolls */
+        .main-reels-container {
+            grid-auto-columns: 42%;
+            gap: 10px;
+            scrollbar-width: none;
+        }
+    }
+
+    /* responsive end */
+
+        </style>
+</head>
+<body>
+
+    <header>
+    
+
+
+        <div class="logo">
+            <span><i class="fa-solid fa-bars"></i></span>
+   <i class="fa-brands fa-youtube"></i>
+    <h1>YouTube</h1>
+</div>
+
+
+<div class="form-wrapper">
+<form action="">
+    <input type="text" placeholder="Search">
+    <span><i class="fa-solid fa-magnifying-glass"></i></span>
+    <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+</form>
+<button><i class="fa-solid fa-microphone"></i></button>
+</div>
+
+
+<div class="profile-area">
+    <button class="create-button"> <i class="fa-solid fa-plus fa-2xl"></i> <span>Create</span></button>
+    <button class="rounded-button"><i class="fa-solid fa-bell"></i></button>
+    <button class="rounded-button"><i class="fa-solid fa-user"></i></button>
+    <button id="" class="rounded-button"><i class="fa-regular fa-lightbulb"></i></button>
+</div>
+</header>
+
+
+<div class="bar-and-content">
+    <div class="left-menu">
+        <ul>
+            <li><i class="fa-solid fa-house"></i> <span>Home</span></li>
+           <li> <i class="fa-solid fa-brazilian-real-sign"></i> <span>reels</span> </li>
+           <li> <i class="fa-solid fa-circle-user"></i> <span>you</span></li>
+        </ul>
+
+<hr class="hr-style disnone">
+
+
+        <ul class="disnone">
+            <li><i class="fa-regular fa-thumbs-up"></i><span>liked videos</span></li>
+                <li><i class="fa-regular fa-clock"></i> <span>History</span></li>
+            <li><i class="fa-solid fa-video"></i><span>Your videos</span></li>
+            <li><i class="fa-solid fa-handshake"></i><span>partenrs</span></li>
+        </ul>
+
+<hr class="hr-style disnone">
+        
+<ul id="subul" class="disnone">
+    <li><i class="disnone"></i><span>Subscription</span></li>
+    <li><img class="border" src="./profile-pic/sally_beauty_company_logo.jpg" alt=""> <span>Sally's Beauty</span></li>
+    <li><img class="border" src="./profile-pic/sheikhalazain.jpg" alt=""> <span>Sheikh Alazain</span></li>
+    <li><img class="border" src="./profile-pic/Best-laptops-Indybest-review.avif" alt=""> <span>Tech Reviews</span></li>
+    <li><img class="border" src="./profile-pic/cpaslock.jpg" alt=""> <span>Security Expert</span></li>
+    <li><img class="border" src="./profile-pic/elzer-from-code-geases.webp" alt=""> <span>Code Master</span></li>
+    <li><img class="border" src="./profile-pic/elzero_web_School.jpg" alt=""> <span>Elzero Web School</span></li>
+    <li><img class="border" src="./profile-pic/Nina_Einstien.webp" alt=""> <span>Nina Einstein</span></li>
+      <li><img class="border" src="./profile-pic/elzer-from-code-geases.webp" alt=""> <span>Code Master</span></li>
+    <li><img class="border" src="./profile-pic/elzero_web_School.jpg" alt=""> <span>Elzero Web School</span></li>
+    <li><img class="border" src="./profile-pic/Nina_Einstien.webp" alt=""> <span>Nina Einstein</span></li>
+    <li id="show-more" class="disnone"><i class="fa-solid fa-angle-down"></i><span>Show more</span></li>
+        <li id="show-less" class="disnone"><i class="fa-solid fa-angle-up"></i><span>Show less</span></li>
+
+</ul>
+
+
+
+
+<hr class="hr-style disnone">
+
+        <ul class="disnone">
+            <li><i class="disnone"></i><span>Explore</span></li>            <li><i class="fa-solid fa-music"></i><span>Music</span></li>
+            <li><i class="fa-solid fa-trophy"></i><span>sports</span></li>
+            <li><i class="fa-regular fa-lightbulb"></i><span>learning</span></li>
+            <li><i class="fa-solid fa-newspaper"></i> <span>news</span></li>
+              <li><i class="fa-solid fa-signal"></i><span>Stream</span></li>
+      <li><i class="fa-solid fa-gamepad"></i><span>games</span></li>
+      <li><i class="fa-solid fa-shirt"></i><span>fashion</span></li>
+        </ul>
+    </div>
+
+
+    <div class="content-wrapper">
+    
+
+<nav>
+         <button class="scroll-nav-button disnone"><i class=" fa solid fa-angle-left"></i></button>
+
+    <ul>
+        <li>Gaming</li>
+        <li>Tech</li>
+        <li>Religous</li>
+        <li>New to you</li>
+        <li>good things</li>
+        <li>Bad things</li>
+        <li>kings</li>
+        <li>GTA V</li>
+        <li>New to you</li>
+        <li>Movies</li>
+        <li>Music</li>
+        <li>Travel</li>
+        <li>Fitness</li>
+        <li>Food & Cooking</li>
+        <li>Books</li>
+        <li>Art & Design</li>
+        <li>Science & Technology</li>
+        <li>Fashion</li>
+        <li>History</li>
+        <li>Sports</li>
+        <li>Photography</li>
+        <li>Personal Development</li>
+        <li>Gaming Consoles</li>
+        <li>Social Media</li>
+        <li>Environmental Issues</li>
+        <li>Education</li>
+        <li>Health & Wellness</li>
+        <li>Hobbies & Crafts</li>
+        <li>Podcasts</li>
+    </ul>
+  <button class="scroll-nav-button"><i class="fa-solid fa-angle-right"></i></button>
+</nav>
+
+
+<main>
+   <div class="main-videos-container">
+
+
+    <div class="card">
+        <img class="video-img" src="./images/gtx1080.webp" alt="GTX 1080">
+        <div class="video-texts-wrapper">
+            <div class="img-and-texts">
+                <img class="video-publisher-img" src="./images/ak47.png" alt="Publisher Image">
+                <div class="tilte-publiser-views">
+                    <h3>Better than 5090ti</h3>
+                    <h4>Moayad Ali</h4>
+                    <h5>1B views • 2 years ago</h5>
+                </div> 
+            </div>
+            <button><i class="fas fa-ellipsis-v"></i></button>
+        </div>
+    </div>
+    
+    <div class="card">
+        <img class="video-img" src="./images/image3.webp" alt="Image 3">
+        <div class="video-texts-wrapper">
+            <div class="img-and-texts">
+                <img class="video-publisher-img" src="./images/gsmmodule.png" alt="Publisher Image">
+                <div class="tilte-publiser-views">
+                    <h3>Ultimate Gaming Setup</h3>
+                    <h4>John Doe</h4>
+                    <h5>500M views • 1 year ago</h5>
+                </div> 
+            </div>
+            <button><i class="fas fa-ellipsis-v"></i></button>
+        </div>
+    </div>
+    
+    <div class="card">
+        <img class="video-img" src="./images/krito.webp" alt="Krito">
+        <div class="video-texts-wrapper">
+            <div class="img-and-texts">
+                <img class="video-publisher-img" src="./images/gtx1080.webp" alt="Publisher Image">
+                <div class="tilte-publiser-views">
+                    <h3>Krito – The Next Generation GPU</h3>
+                    <h4>Ali Ahmed</h4>
+                    <h5>2M views • 1 year ago</h5>
+                </div> 
+            </div>
+            <button><i class="fas fa-ellipsis-v"></i></button>
+        </div>
+    </div>
+
+    
+    <div class="card">
+        <img class="video-img" src="./images/namaste javascript.jpg" alt="Namaste Javascript">
+        <div class="video-texts-wrapper">
+            <div class="img-and-texts">
+                <img class="video-publisher-img" src="./images/gsmmodule.png" alt="Publisher Image">
+                <div class="tilte-publiser-views">
+                    <h3>Namaste JavaScript</h3>
+                    <h4>JavaScript Master</h4>
+                    <h5>200K views • 3 months ago</h5>
+                </div> 
+            </div>
+            <button><i class="fas fa-ellipsis-v"></i></button>
+        </div>
+    </div>
+
+    
+    <div class="card">
+        <img class="video-img" src="./images/sekiro sahdow dire twice.jpg" alt="Sekiro Shadow Die Twice">
+        <div class="video-texts-wrapper">
+            <div class="img-and-texts">
+                <img class="video-publisher-img" src="./images/ak47.png" alt="Publisher Image">
+                <div class="tilte-publiser-views">
+                    <h3>Sekiro: Shadows Die Twice</h3>
+                    <h4>Gamer X</h4>
+                    <h5>500M views • 1 year ago</h5>
+                </div> 
+            </div>
+            <button><i class="fas fa-ellipsis-v"></i></button>
+        </div>
+    </div>
+
+
+    
+    <div class="card">
+        <img class="video-img" src="./images/ak47.png" alt="AK47">
+        <div class="video-texts-wrapper">
+            <div class="img-and-texts">
+                <img class="video-publisher-img" src="./images/gtx1080.webp" alt="Publisher Image">
+                <div class="tilte-publiser-views">
+                    <h3>AK47</h3>
+                    <h4>Weapon Pro</h4>
+                    <h5>1M views • 8 months ago</h5>
+                </div> 
+            </div>
+            <button><i class="fas fa-ellipsis-v"></i></button>
+        </div>
+    </div>
+    
+    <div class="card">
+        <img class="video-img" src="./images/gsmmodule.png" alt="GSM Module">
+        <div class="video-texts-wrapper">
+            <div class="img-and-texts">
+                <img class="video-publisher-img" src="./images/krito.webp" alt="Publisher Image">
+                <div class="tilte-publiser-views">
+                    <h3>GSM Module for IoT Projects</h3>
+                    <h4>Techie Guru</h4>
+                    <h5>300K views • 5 months ago</h5>
+                </div> 
+            </div>
+            <button><i class="fas fa-ellipsis-v"></i></button>
+        </div>
+    </div>
+   </div> 
+
+
+   <div class="main-reels-container">
+
+    <div class="reel-card">
+        <img src="./reel-images/bbuandrruandbts.jpeg" alt="bbuandrruandbts">
+        <div class="reel-card-text-container">
+            <div class="reel-card-texts-itself">
+                <h3>bbuandrruandbts</h3>
+                <h4>views 100M</h4>
+            </div>
+            <button><i class="fas fa-ellipsis-v"></i></button>
+        </div>
+    </div>
+    
+    <div class="reel-card">
+        <img src="./reel-images/ghot of tusima and toshiba.avif" alt="ghot of tusima and toshiba">
+        <div class="reel-card-text-container">
+            <div class="reel-card-texts-itself">
+                <h3>ghot of tusima and toshiba</h3>
+                <h4>views 1B</h4>
+            </div>
+            <button><i class="fas fa-ellipsis-v"></i></button>
+        </div>
+    </div>
+
+
+    
+    <div class="reel-card">
+        <img src="./reel-images/Goddess+Sword.webp" alt="Goddess Sword">
+        <div class="reel-card-text-container">
+            <div class="reel-card-texts-itself">
+                <h3>Goddess Sword</h3>
+                <h4>views 200K</h4>
+            </div>
+            <button><i class="fas fa-ellipsis-v"></i></button>
+        </div>
+    </div>
+
+
+    
+    <div class="reel-card">
+        <img src="./reel-images/how-useful-are-antminer-s19-xps-at-todays-hashrates-v0-eir8nl50010f1.webp" alt="how useful are antminer s19 xps">
+        <div class="reel-card-text-container">
+            <div class="reel-card-texts-itself">
+                <h3>how useful are antminer s19 xps</h3>
+                <h4>views 75M</h4>
+            </div>
+            <button><i class="fas fa-ellipsis-v"></i></button>
+        </div>
+    </div>
+    
+    <div class="reel-card">
+        <img src="./reel-images/mangos.jpg" alt="mangos">
+        <div class="reel-card-text-container">
+            <div class="reel-card-texts-itself">
+                <h3>mangos</h3>
+                <h4>views 15M</h4>
+            </div>
+            <button><i class="fas fa-ellipsis-v"></i></button>
+        </div>
+    </div>
+   </div>
+
+
+   <div class="main-videos-container">
+
+    <div class="card">
+        <img class="video-img" src="./images/sekiro sahdow dire twice.jpg" alt="Sekiro Shadow Die Twice">
+        <div class="video-texts-wrapper">
+            <div class="img-and-texts">
+                <img class="video-publisher-img" src="./images/gsmmodule.png" alt="Publisher Image">
+                <div class="tilte-publiser-views">
+                    <h3>Sekiro: Shadows Die Twice</h3>
+                    <h4>Techie Guru</h4>
+                    <h5>500M views • 1 year ago</h5>
+                </div>
+            </div>
+            <button><i class="fas fa-ellipsis-v"></i></button>
+        </div>
+    </div>
+
+    <div class="card">
+        <img class="video-img" src="./images/namaste javascript.jpg" alt="Namaste Javascript">
+        <div class="video-texts-wrapper">
+            <div class="img-and-texts">
+                <img class="video-publisher-img" src="./images/ak47.png" alt="Publisher Image">
+                <div class="tilte-publiser-views">
+                    <h3>Namaste JavaScript</h3>
+                    <h4>Gamer X</h4>
+                    <h5>200K views • 3 months ago</h5>
+                </div>
+            </div>
+            <button><i class="fas fa-ellipsis-v"></i></button>
+        </div>
+    </div>
+
+    <div class="card">
+        <img class="video-img" src="./images/gtx1080.webp" alt="GTX 1080">
+        <div class="video-texts-wrapper">
+            <div class="img-and-texts">
+                <img class="video-publisher-img" src="./images/gsmmodule.png" alt="Publisher Image">
+                <div class="tilte-publiser-views">
+                    <h3>Better than 5090ti</h3>
+                    <h4>John Doe</h4>
+                    <h5>1B views • 2 years ago</h5>
+                </div>
+            </div>
+            <button><i class="fas fa-ellipsis-v"></i></button>
+        </div>
+    </div>
+
+    <div class="card">
+        <img class="video-img" src="./images/ak47.png" alt="AK47">
+        <div class="video-texts-wrapper">
+            <div class="img-and-texts">
+                <img class="video-publisher-img" src="./images/gtx1080.webp" alt="Publisher Image">
+                <div class="tilte-publiser-views">
+                    <h3>AK47</h3>
+                    <h4>Weapon Pro</h4>
+                    <h5>1M views • 8 months ago</h5>
+                </div>
+            </div>
+            <button><i class="fas fa-ellipsis-v"></i></button>
+        </div>
+    </div>
+
+    <div class="card">
+        <img class="video-img" src="./images/image3.webp" alt="Image 3">
+        <div class="video-texts-wrapper">
+            <div class="img-and-texts">
+                <img class="video-publisher-img" src="./images/gtx1080.webp" alt="Publisher Image">
+                <div class="tilte-publiser-views">
+                    <h3>Ultimate Gaming Setup</h3>
+                    <h4>Moayad Ali</h4>
+                    <h5>500M views • 1 year ago</h5>
+                </div>
+            </div>
+            <button><i class="fas fa-ellipsis-v"></i></button>
+        </div>
+    </div>
+
+    <div class="card">
+        <img class="video-img" src="./images/gsmmodule.png" alt="GSM Module">
+        <div class="video-texts-wrapper">
+            <div class="img-and-texts">
+                <img class="video-publisher-img" src="./images/krito.webp" alt="Publisher Image">
+                <div class="tilte-publiser-views">
+                    <h3>GSM Module for IoT Projects</h3>
+                    <h4>Ali Ahmed</h4>
+                    <h5>300K views • 5 months ago</h5>
+                </div>
+            </div>
+            <button><i class="fas fa-ellipsis-v"></i></button>
+        </div>
+    </div>
+
+    <div class="card">
+        <img class="video-img" src="./images/krito.webp" alt="Krito">
+        <div class="video-texts-wrapper">
+            <div class="img-and-texts">
+                <img class="video-publisher-img" src="./images/ak47.png" alt="Publisher Image">
+                <div class="tilte-publiser-views">
+                    <h3>Krito – The Next Generation GPU</h3>
+                    <h4>Weapon Pro</h4>
+                    <h5>2M views • 1 year ago</h5>
+                </div>
+            </div>
+            <button><i class="fas fa-ellipsis-v"></i></button>
+        </div>
+    </div>
+
+    <div class="card">
+        <img class="video-img" src="./images/sekiro sahdow dire twice.jpg" alt="Sekiro Shadow Die Twice">
+        <div class="video-texts-wrapper">
+            <div class="img-and-texts">
+                <img class="video-publisher-img" src="./images/gsmmodule.png" alt="Publisher Image">
+                <div class="tilte-publiser-views">
+                    <h3>Sekiro: Shadows Die Twice</h3>
+                    <h4>JavaScript Master</h4>
+                    <h5>500M views • 1 year ago</h5>
+                </div>
+            </div>
+            <button><i class="fas fa-ellipsis-v"></i></button>
+        </div>
+    </div>
+
+</div>
+
+</main>
+
+    </div>
+</div>  
+    <script src="https://kit.fontawesome.com/566063eab6.js" crossorigin="anonymous"></script>
+    <script src="./main.js"></script>
+</body>
+</html>
